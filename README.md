@@ -51,7 +51,7 @@ cueing(3) // shorthand for `cueing(new Array(3))`
 - Get the value at `offset` and reset the needle
 - &rarr; `*`
 
-#### `.recall(offset=0)`
+#### `.recall(index?)`
 - Recall previously stored cue points (needles)
 - &rarr; `number`|`Array`
 
