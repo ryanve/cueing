@@ -15,7 +15,7 @@
 
   /**
    * @constructor
-   * @param {number|{length:number}} pool length or items
+   * @param {number|{length:number}|Cueing} pool length or items
    */
   function Cueing(pool) {
     if (typeof pool == 'number') pool = new Array(pool)
@@ -27,8 +27,8 @@
 
   /**
    * @param {number|{length:number}} pool
-   * @param {number=} current index (+/-)
-   * @param {number=} next offset (+/-)
+   * @param {(number|Number|Cueing)=} current index (+/-)
+   * @param {(number|Number|Cueing)=} next offset (+/-)
    * @return {number} index
    */
   cueing.cue = function(pool, current, next) {
@@ -46,38 +46,59 @@
   
   /**
    * @param {{length:number}} pool
-   * @param {number=} current index (+/-)
-   * @param {number=} next offset (+/-)
+   * @param {(number|Number|Cueing)=} current index (+/-)
+   * @param {(number|Number|Cueing)=} next offset (+/-)
    * @return {*} value
    */
   cueing.seek = function(pool, current, next) {
     return pool[cueing.cue(pool, current, next)]
   }
+  
+  /**
+   * @this {Cueing} instance to clone
+   * @return {Cueing} clone
+   */
+  model.clone = function() {
+    var clone = cueing(this).needle(this._needle)
+    clone.push.apply(clone._recall, this._recall)
+    return clone
+  }
 
   /**
    * @this {Cueing}
-   * @param {number=} index (+/-)
-   * @return {number} index
+   * @param {(number|Number|Cueing)=} index to manually move the needle to
+   * @return {Cueing} object with updated needle position
    */
   model.needle = function(index) {
-    if (null == index) return this._needle
-    this._needle = +index || 0
-    this._needle === cueing.cue(this._recall, -1) || this._recall.push(this._needle)
-    return this._needle
+    if (null != index) this._needle = +index || 0
+    return this
   }
-  
+
   /**
-   * @this {Cueing}
-   * @param {number=} offset (+/-)
-   * @return {Array|number}
-   */
-  model.recall = function(offset) {
-    return null == offset ? this._recall : cueing.seek(this._recall, offset)
-  }
-  
-  /**
-   * @this {Cueing}
+   * @this {Cueing} object with memory to store to
+   * @param {number|Number|Cueing} point cue point to save for recalling
    * @return {Cueing}
+   */
+  model.store = function(point) {
+    var recall = this._recall
+    point = +point || 0
+    point === recall[recall.length-1] || recall.push(point)
+    return this
+  }
+  
+  /**
+   * @this {Cueing} object to recall from
+   * @param {(number|Number|Cueing)=} index (+/-) of the cue point to recall
+   * @return {Cueing} object with needle cued to recalled state
+   */
+  model.recall = function(index) {
+    if (null == index) return cueing(this._recall)
+    return this.needle(cueing.seek(this._recall, index))
+  }
+
+  /**
+   * @this {Cueing} object to clear
+   * @return {Cueing} object with memory cleared
    */
   model.clear = function() {
     this._recall.length = 0
@@ -86,16 +107,17 @@
 
   /**
    * @this {Cueing}
-   * @param {number=} offset (+/-)
-   * @return {number}
+   * @param {(number|Number|Cueing)=} offset (+/-)
+   * @return {Cueing} object cued to offset
    */
   model.cue = function(offset) {
-    return this.needle(cueing.cue(this, this.needle(), offset))
+    var point = cueing.cue(this, this._needle, offset)
+    return this.needle(point).store(point)
   }
-  
+
   /**
    * @this {Cueing}
-   * @param {number=} offset (+/-)
+   * @param {(number|Number|Cueing)=} offset (+/-)
    * @return {*} value
    */
   model.seek = function(offset) {
@@ -107,7 +129,7 @@
    * @return {string} index
    */
   model.toString = function() {
-    return '' + this.needle()
+    return '' + this._needle
   }
 
   return cueing
