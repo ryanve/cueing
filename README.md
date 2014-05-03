@@ -70,12 +70,12 @@ list[list] // 'c'
 - &rarr; `this`
 
 #### `.cue(offset=0)`
-- Move the needle by `offset`
+- Move the needle by `offset` and store cue point
 - `offset`: `number|cueing` +/- integer to move the needle by
 - &rarr; `this`
 
 #### `.seek(offset=0)`
-- Move the needle by `offset` and get the value there
+- `.cue` the offset and get the value there
 - `offset`: `number|cueing` +/- integer to move the needle by
 - &rarr; `*`
 
