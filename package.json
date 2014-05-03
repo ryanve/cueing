@@ -1,11 +1,11 @@
 {
   "name": "cueing",
   "description": "Cue, seek, or cycle items",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/ryanve/cueing",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "keywords": ["seek", "cycle", "utility", "ender"],
+  "keywords": ["seek", "cycle", "playlist", "utility", "ender"],
   "main": "cueing.js",
   "repository": {
     "type": "git",

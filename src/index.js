@@ -96,7 +96,7 @@
   /**
    * @this {Cueing} object to recall from
    * @param {(number|Number|Cueing)=} index (+/-) of the cue point to recall
-   * @return {Cueing} object with all recalls or cued to recalled point
+   * @return {Cueing} object at recalled state
    */
   model.recall = function(index) {
     if (null == index) return cueing(this._recall)
