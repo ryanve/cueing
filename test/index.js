@@ -97,7 +97,6 @@
     if ('e' !== o.seek(-15)) return false
     if ('e' !== o.seek(50)) return false
     if ('a' !== o.seek(51)) return false
-    if (4 !== +o.recall(-2))  return false
     return true
   })
   
@@ -121,20 +120,18 @@
   })
   
   aok('.store', function() {
-    var o = cueing()
-    if (o !== o.store(1)) return false
+    var o = cueing().needle(1)
+    if (o !== o.store()) return false
     if (1 !== cueing.seek(o._recall, -1)) return false
     var stored = o._recall.length
-    return 2 > o.store(1).store(1)._recall.length - stored
+    return 2 > o.store().store()._recall.length - stored
   })
   
   aok('.recall', function() {
-    var o = cueing(10)
-    o.cue(1)
-    o.cue(1)
-    if (2 !== +o.recall(-1)) return false
+    var o = cueing(10).store().cue(1).store().cue(1).store()
+    if (+o.needle() !== +o.recall(-1)) return false
     if (o._recall.join() !== o.recall().join()) return false
-    if (5 !== o.store(5)._recall.pop()) return false
+    if (5 !== o.needle(5).store()._recall.pop()) return false
     return o.recall(0) instanceof cueing
   })
   
