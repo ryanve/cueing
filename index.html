@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<title>Cueing: tests</title>
+<title>Cueing: JavaScript cycling module</title>
 <style>
-  html { font-family:sans-serif; background:#efefef; color:#111 }
-  body { width:96%; margin:auto; font-size:1em; line-height:1.6 }
-  pre, code, kbd { font-family:monospace; -moz-tab-size:2; -o-tab-size:2; tab-size:2 }
-  h3 b { font-weight:700 }
-  h3, pre b { font-weight:400 }
-  pre { padding:0 .5em; white-space:pre-line }
-  pre span { white-space:pre-wrap }
-  pre b { color:#008080 }
-  pre small { font-size:inherit; font-family:inherit; color:#707070 }
-  kbd { display:inline-block; padding:.2em }
-  pre kbd { padding:0 }
+  * { box-sizing: border-box; }
+  :focus { outline: .2em solid Plum }
+  a:not(:hover):not(:focus) { text-decoration: none; }
+  a { display: inline-block; background: Black; color: MediumSpringGreen; padding: 1em; }
+  html { font: 1.125em sans-serif; background: MediumSpringGreen; color: Black; }
+  body { width: 100%; margin: auto; padding: 1em; }
+  code { font: bold 1em monospace; padding: .2em .3em; background: PaleGreen; color: Black; }
+  header { display: block; margin-bottom: 1.5em; }
+  h1 { margin-top: 0; }
 </style>
 
-<h1>To run tests</h1>
-<pre><span><b>$</b> <kbd>npm install</kbd></span></pre>
-<h3><b>Browser</b>: open the console</h3>
-<h3><b>CLI</b>: run tests via <code>npm test</></h3>
+<header>
+  <h1>cueing <span role="presentation">&#9658;&#9658;|</span></h1>
+  <a href="https://github.com/ryanve/cueing">Github</a>
+  <a href="https://www.npmjs.com/package/cueing">npm</a>
+</header>
+
+Try <code>cueing</code> in the console
 
 <script src="cueing.js"></script>
 <script src="test.js"></script>
