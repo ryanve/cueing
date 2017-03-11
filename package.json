@@ -5,8 +5,20 @@
   "homepage": "https://github.com/ryanve/cueing",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "keywords": ["seek", "cycle", "playlist", "utility", "ender"],
+  "keywords": [
+    "seek",
+    "cycle",
+    "playlist",
+    "utility",
+    "ender"
+  ],
   "main": "cueing.js",
+  "scripts": {
+    "lint": "jshint cueing.js && jshint test.js",
+    "preversion": "npm test",
+    "pretest": "npm run lint",
+    "test": "node test.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ryanve/cueing.git"
@@ -15,9 +27,7 @@
   "optionalDependencies": {},
   "devDependencies": {
     "aok": "^1.8.1",
-    "grunt-contrib-concat": "^0.3.0",
-    "grunt-contrib-jshint": "^0.9.0",
-    "universal": "^0.1.0"
+    "jshint": "^2.9.4"
   },
   "jshintConfig": {
     "asi": true,

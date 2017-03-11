@@ -1,8 +1,3 @@
-/*!
- * cueing 0.1.0+201405030147
- * https://github.com/ryanve/cueing
- * MIT License (c) 2014 Ryan Van Etten
- */
 !function(root, name, make) {
   if (typeof module != 'undefined' && module.exports) module.exports = make()
   else root[name] = make()
@@ -48,7 +43,7 @@
     else if (0 > next) next = next % pool + pool
     return next === next ? next : -1
   }
-  
+
   /**
    * @param {{length:number}} pool
    * @param {(number|Number|Cueing)=} current index (+/-)
@@ -58,7 +53,7 @@
   cueing.seek = function(pool, current, next) {
     return pool[cueing.cue(pool, current, next)]
   }
-  
+
   /**
    * @this {Cueing} instance to clone
    * @return {Cueing} clone
@@ -88,7 +83,7 @@
     if (recall[recall.length-1] !== point) recall.push(point)
     return this
   }
-  
+
   /**
    * @this {Cueing} object with memory to clear
    * @return {Cueing} object with memory cleared
@@ -125,7 +120,7 @@
   model.seek = function(offset) {
     return this[this.cue(offset)]
   }
-  
+
   /**
    * @this {Cueing}
    * @return {string} index

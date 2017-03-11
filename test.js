@@ -1,7 +1,7 @@
 !function(root, name) {
   var common = typeof module != 'undefined' && !!module.exports
   var aok = common ? require('aok') : root.aok
-  var cueing = common ? require('../src') : root[name]
+  var cueing = common ? require('./') : root[name]
 
   aok('instanceof', cueing() instanceof cueing)
   aok('inherits array', cueing() instanceof Array && 0 === cueing([0]).pop())
@@ -22,7 +22,7 @@
     if (0 !== o.recall().length) return false
     return true
   })
-  
+
   aok('instance properties from array', function() {
     var o = cueing(['a', 'b'])
     if (2 !== o.length) return false
@@ -30,7 +30,7 @@
     if (0 !== o.recall().length) return false
     return true
   })
-  
+
   aok('instance coerces to needle', function() {
     var o = cueing(['a'])
     if (o._needle != o) return false
@@ -41,7 +41,7 @@
     if (o !== o.needle() || o !== o.needle(0)) return false
     return isFinite(o)
   })
-  
+
   aok('#cue', function() {
     var letters = ['a', 'b', 'c']
     if (2 !== +cueing.cue(letters, -1)) return false
@@ -49,7 +49,7 @@
     if (1 !== +cueing.cue(letters, 1)) return false
     return true
   })
-  
+
   aok('#cue offset', function() {
     var letters = ['a', 'b', 'c']
     if (2 !== +cueing.cue(letters, 1, 1)) return false
@@ -58,7 +58,7 @@
     if (1 !== +cueing.cue(letters, 0, 4)) return false
     return true
   })
-  
+
   aok('#seek', function() {
     var letters = ['a', 'b', 'c']
     if ('c' !== cueing.seek(letters, -1)) return false
@@ -67,7 +67,7 @@
     if ('b' !== cueing.seek(letters, 1)) return false
     return true
   })
-  
+
   aok('#seek offset', function() {
     var letters = ['a', 'b', 'c']
     if ('c' !== cueing.seek(letters, 1, 1)) return false
@@ -75,7 +75,7 @@
     if ('b' !== cueing.seek(letters, 0, 4)) return false
     return true
   })
-  
+
   aok('.cue', function() {
     var o = cueing(10)
     if (0 !== +o) return false
@@ -86,7 +86,7 @@
     if (9 !== +o) return false
     return true
   })
-  
+
   aok('.seek', function() {
     var o = cueing(['a', 'b', 'c', 'd', 'e'])
     if (0 !== +o.needle()) return false
@@ -99,7 +99,7 @@
     if ('a' !== o.seek(51)) return false
     return true
   })
-  
+
   aok('.needle', function() {
     var o = cueing(10)
     if (1 !== +o.cue(1) || 1 != o.needle()) return false
@@ -109,7 +109,7 @@
     if (5 !== +o.needle(5) || 5 != o.needle()) return false
     return true
   })
-  
+
   aok('.clone', function() {
     var o = cueing(['a', 'b']), clone = o.clone()
     if (o === clone) return false
@@ -118,7 +118,7 @@
     if (o.join() !== clone.join()) return false
     return o.recall().length === clone.recall().length
   })
-  
+
   aok('.store', function() {
     var o = cueing().needle(1)
     if (o !== o.store()) return false
@@ -126,7 +126,7 @@
     var stored = o._recall.length
     return 2 > o.store().store()._recall.length - stored
   })
-  
+
   aok('.recall', function() {
     var o = cueing(10).store().cue(1).store().cue(1).store()
     if (+o.needle() !== +o.recall(-1)) return false
@@ -134,7 +134,7 @@
     if (5 !== o.needle(5).store()._recall.pop()) return false
     return o.recall(0) instanceof cueing
   })
-  
+
   aok('.clear', function() {
     var o = cueing(10)
     o.cue(1)
@@ -142,5 +142,5 @@
     o.clear()
     return !o.recall().length
   })
-  
+
 }(this, 'cueing');
