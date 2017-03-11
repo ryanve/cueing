@@ -148,4 +148,7 @@
   })
 
   console.info('All tests passed =)')
+  try {
+    window.console.dir(cueing)
+  } catch (e) {}
 }(this, 'cueing');
