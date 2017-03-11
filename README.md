@@ -1,8 +1,8 @@
 # cueing &#9658;&#9658;|
 #### Cue, seek, or cycle items in JavaScript in node or the browser
 
-```sh
-$ npm install cueing --save
+```
+npm install cueing --save
 ```
 
 ### Basic usage
