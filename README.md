@@ -117,5 +117,5 @@ cueing.seek(['a', 'b', 'c'], 1, -1) // => 'a'
 cueing.seek(['a', 'b', 'c'], 0, 5) // => 'b'
 ```
 
-## License
-MIT
+## Playground
+[Try `cueing` in the browser](http://ryanve.github.io/cueing/)
