@@ -1,7 +1,7 @@
 {
   "name": "cueing",
   "description": "Cue, seek, or cycle items",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/ryanve/cueing",
   "license": "MIT",
   "author": "Ryan Van Etten",
