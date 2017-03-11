@@ -26,7 +26,6 @@
   "dependencies": {},
   "optionalDependencies": {},
   "devDependencies": {
-    "aok": "^1.8.1",
     "eslint": "^3.17.1"
   }
 }
