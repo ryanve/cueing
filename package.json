@@ -8,9 +8,13 @@
   "keywords": [
     "seek",
     "cycle",
+    "cycling",
     "playlist",
+    "playlists",
     "utility",
-    "ender"
+    "arrays",
+    "ender",
+    "javascript"
   ],
   "main": "cueing.js",
   "scripts": {
@@ -23,8 +27,9 @@
     "type": "git",
     "url": "https://github.com/ryanve/cueing.git"
   },
-  "dependencies": {},
-  "optionalDependencies": {},
+  "bugs": {
+    "url": "https://github.com/ryanve/cueing/issues"
+  },
   "devDependencies": {
     "eslint": "^3.17.1"
   }
