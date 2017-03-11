@@ -14,7 +14,7 @@
   ],
   "main": "cueing.js",
   "scripts": {
-    "lint": "jshint cueing.js && jshint test.js",
+    "lint": "eslint . --ext .js",
     "preversion": "npm test",
     "pretest": "npm run lint",
     "test": "node test.js"
@@ -27,35 +27,6 @@
   "optionalDependencies": {},
   "devDependencies": {
     "aok": "^1.8.1",
-    "jshint": "^2.9.4"
-  },
-  "jshintConfig": {
-    "asi": true,
-    "boss": true,
-    "browser": true,
-    "debug": true,
-    "devel": true,
-    "eqnull": true,
-    "evil": true,
-    "expr": true,
-    "globals": {
-      "define": true,
-      "ender": true
-    },
-    "jquery": true,
-    "lastsemic": true,
-    "latedef": "nofunc",
-    "laxcomma": true,
-    "maxcomplexity": 15,
-    "maxerr": 10,
-    "maxlen": 115,
-    "maxparams": 4,
-    "node": true,
-    "sub": true,
-    "supernew": true,
-    "trailing": true,
-    "undef": true,
-    "unused": true,
-    "worker": true
+    "eslint": "^3.17.1"
   }
 }
