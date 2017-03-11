@@ -147,8 +147,8 @@
     return !o.recall().length
   })
 
-  console.info('All tests passed =)')
   try {
+    console.info('All tests passed =)')
     window.console.dir(cueing)
   } catch (e) {}
 }(this, 'cueing');
