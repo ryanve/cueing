@@ -80,7 +80,14 @@
     return true
   })
 
-  ok('#store', function() {
+  ok('#store fresh', function() {
+    var history = []
+    cueing.store(history, 8)
+    cueing.store(history, 7)
+    return history.join('') === '87'
+  })
+
+  ok('#store existing', function() {
     var history = [1, 5]
     cueing.store(history, 5)
     cueing.store(history, 3)
