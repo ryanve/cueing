@@ -61,7 +61,8 @@
    */
   cueing.store = function(array, point) {
     if (null == point) throw new TypeError
-    if (array[array.length - 1] !== point) array.push(point)
+    var length = array.length
+    if (!length || array[length - 1] !== point) array.push(point)
     return array
   }
 
