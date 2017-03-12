@@ -82,7 +82,6 @@ list[list] // 'c'
 
 #### `.store()`
 - Store the current needle position for recalling later
-- `.store` is automatically called whenever `.cue` or `.seek` moves the needle
 - &rarr; `this`
 
 #### `.recall(index?)`
