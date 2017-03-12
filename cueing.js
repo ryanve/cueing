@@ -55,6 +55,17 @@
   }
 
   /**
+   * @param {Array} array
+   * @param {number} point
+   * @return {Array}
+   */
+  cueing.store = function(array, point) {
+    if (null == point) throw new TypeError
+    if (array[array.length - 1] !== point) array.push(point)
+    return array
+  }
+
+  /**
    * @this {Cueing} instance to clone
    * @return {Cueing} clone
    */
@@ -79,8 +90,7 @@
    * @return {Cueing}
    */
   model.store = function() {
-    var recall = this._recall, point = this._needle
-    if (recall[recall.length-1] !== point) recall.push(point)
+    cueing.store(this._recall, this._needle)
     return this
   }
 
@@ -109,7 +119,7 @@
    * @return {Cueing} object cued to offset
    */
   model.cue = function(offset) {
-    return this.needle(cueing.cue(this, this._needle, offset)).store()
+    return this.needle(cueing.cue(this, this._needle, offset))
   }
 
   /**

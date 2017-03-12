@@ -71,7 +71,7 @@ list[list] // 'c'
 - &rarr; `this`
 
 #### `.cue(offset=0)`
-- Move the needle by `offset` and store cue point
+- Move the needle by `offset`
 - `offset`: `number|cueing` +/- integer to move the needle by
 - &rarr; `this`
 
@@ -80,18 +80,18 @@ list[list] // 'c'
 - `offset`: `number|cueing` +/- integer to move the needle by
 - &rarr; `*`
 
-#### `.recall(index?)`
-- Recall previously stored cue points
-- `index`: `number|cueing` +/- index to read. `0` reads the oldest point. `-1` reads the newest.
-- &rarr; `cueing` instance at recalled state
-
 #### `.store()`
-- Manually store the current needle position for recalling later
+- Store the current needle position for recalling later
 - `.store` is automatically called whenever `.cue` or `.seek` moves the needle
 - &rarr; `this`
 
+#### `.recall(index?)`
+- Recall stored cue point(s)
+- `index`: `number|cueing` +/- index to read. `0` reads the oldest point. `-1` reads the newest.
+- &rarr; `cueing` instance at recalled state
+
 #### `.clear()`
-- Clear all cue points
+- Clear stored cue points
 - &rarr; `this`
 
 #### `.clone()`
@@ -116,6 +116,16 @@ cueing.cue(['a', 'b', 'c'], 1, -2) // => 2
 ```js
 cueing.seek(['a', 'b', 'c'], 1, -1) // => 'a'
 cueing.seek(['a', 'b', 'c'], 0, 5) // => 'b'
+```
+
+#### `cueing.store(array, point)`
+- Push `point` onto `array` if different from last point
+- &rarr; `array` reference
+
+```js
+cueing.store([1, 5], 3) // => [1, 5, 3]
+cueing.store([1, 5], 5) // => [1, 5]
+cueing.store([1, 5], 1) // => [1, 5, 1]
 ```
 
 ## Playground

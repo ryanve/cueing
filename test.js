@@ -80,6 +80,14 @@
     return true
   })
 
+  ok('#store', function() {
+    var history = [1, 5]
+    cueing.store(history, 5)
+    cueing.store(history, 3)
+    cueing.store(history, 1)
+    return history.join('') === '1531'
+  })
+
   ok('.cue', function() {
     var o = cueing(10)
     if (0 !== +o) return false
